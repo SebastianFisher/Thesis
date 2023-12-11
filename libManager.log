@@ -1,0 +1,24 @@
+\o Program:		@(#)$CDS: libManager version 6.1.8 - CAT37 10/18/2022 20:11 (sjfdcl1032) $
+\o Sub version:		sub-version  s292 
+\o Arguments:		-unmapped -mpssession virtuoso1184987 -mpshost della-sengupta.princeton.edu 
+\o Working Directory:	della-sengupta.princeton.edu:/home/sbfisher/Cadence/Thesis
+\o 64-bit offsets
+\o Qt version: 		5.9.1
+\o changeWorkingDir("/home/sbfisher/Cadence/Thesis") unnecessary.
+\o ddSetForcedLib("") unnecessary.
+\o Log file is "/home/sbfisher/Cadence/Thesis/libManager.log".
+\o Opening libManager window.
+\a nrSetWindowVisibility(cdsLibManager "show")
+\o MPS service: map window
+\o Library Manager customization server connected.
+\a nrSetCurrentWindow(cdsLibManager)
+\a nrResizeWindow(cdsLibManager list(1017 70 602 491))
+\a _lmSetFilter( 'library "th")
+\a _lmSetFilter( 'library "t")
+\a _lmSetFilter( 'library "")
+\a nrSetWindowVisibility(cdsLibManager "hide")
+\a _lmgrCloseIconify("cdsLibManager" 1)
+\a cdsLibManager->libComboFilter->value = ""
+\o MPS service: shutdown
+\o libManager is exiting.
+\a exit(0)

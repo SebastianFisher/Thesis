@@ -1,0 +1,6 @@
+geGetEditCellView( )
+dbCreateRect(nil (list "LD" "drawing") (list (list 9.25 -0.75) (list 20.75 10.75)) )
+geGetEditCellView( )
+geGetEditCellView( )
+geGetEditCellView( )
+geGetEditCellView( )

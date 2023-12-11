@@ -1,0 +1,137 @@
+# ~/.cshrc - default .cshrc file for all architectures.
+
+################################################################
+## Please do not change the following few lines unless you're ##
+## sure you know what you're doing.                           ##
+################################################################
+
+set MorePath=''
+setenv ARCH `uname -s`
+set where='/usr/operations/lib/userconfig'		# where global files are
+if ( -e $where/cshrc-$ARCH ) source $where/cshrc-$ARCH
+
+
+
+setenv QRC_HOME /usr/licensed/cadence/EXT131/
+setenv PATH "$QRC_HOME/bin:$QRC_HOME/tools/bin:${PATH}"
+setenv QRC_ENABLE_EXTRACTION t
+setenv EMXHOME "/usr/licensed/cadence/emx"
+
+source /usr/licensed/cadence/cshrc
+setenv CDS /usr/licensed/cadence/ICADV123
+#setenv CDS /usr/licensed/cadence/IC617
+setenv CDS_Netlisting_Mode Analog
+
+#if ( $OS == "SunOS5" ) then
+#setenv CDS /usr/licensed/cadence-20060508/IC615.sun4v
+#else
+#setenv CDS /usr/licensed/cadence-20060508/IC615
+#endif
+
+
+setenv ASSURAHOME /usr/licensed/cadence/ASSURA41
+setenv PATH "$ASSURAHOME/tools/bin:$ASSURAHOME/tools/assura/bin:${PATH}"
+
+
+################################################################
+if ($?prompt) then			# if this is an interactive shell
+        set notify			# notify when background jobs complete
+        set history=100			# remember last 100 commands
+	set filec			# press ESC to complete filenames
+        alias pd pushd			# pd same as pushd
+        alias pop popd			# pop same as popd
+	alias h history			# ICGL standard
+# You can add your own aliases here, before the "endif", following the
+# format above.
+#
+# If you want "rm" not to ask you for confirmation (dangerous),
+# uncomment the following line:
+#       unalias rm                      # then rm wouldn't confirm
+endif
+
+# You can add to the path here by adding any directories you want to be
+# searched for executable files to the following line, separated by colons.
+# (Make sure you include the existing $PATH!)
+
+setenv PATH ${PATH}:/home/sbfisher/.local/bin
+
+# You can add to the list of directories where `man' will search for
+# manual pages here by uncommenting the following line and listing the
+# directories you want to be searched, separated by colons.
+# Make sure you include the existing $MANPATH.
+#
+# setenv MANPATH ${MANPATH}:~/man:/some/other/path
+
+# append an additional path.  for now, this is used to add /usr/princeton
+# to the end of the search path.
+
+#if (x$MorePath != 'x') setenv PATH ${PATH}:${MorePath}
+
+# Add the current directory, ".", to the end of the PATH
+# If, for security reasons, you do not want this then comment out the next line
+
+
+# ADS set-up
+
+#setenv HPEESOF_DIR /usr/licensed/Agilent/ADS2016_01/
+
+#setenv HPEESOF_DIR /usr/licensed/Agilent/ADS2013_06/
+#setenv ADS_LICENSE_FILE /usr/licensed/Agilent/agilent.lic
+#setenv ADS_LICENSE_FILE "27003@raas03"
+#setenv PATH "${PATH}:$HPEESOF_DIR/bin"
+#setenv HPEESOF_DIR /usr/licensed/Agilent/ADS2016_01/
+#setenv ADS_LICENSE_FILE "27003@raas03"
+#setenv PATH "${PATH}:$HPEESOF_DIR/bin"
+#setenv LD_LIBRARY_PATH "${PATH}:$HPEESOF_DIR/bin"
+
+setenv HPEESOF_DIR /usr/licensed/Agilent/ADS2020_02
+setenv PATH ${HPEESOF_DIR}/bin:${PATH}
+
+#setenv HPEESOF_DIR /usr/licensed/Agilent/ADS2020_02/
+#setenv ADS_LICENSE_FILE "27003@licensed.rc.princeton.edu"
+#setenv PATH "${PATH}:$HPEESOF_DIR/bin"
+#setenv LD_LIBRARY_PATH "${PATH}:$HPEESOF_DIR/bin"
+
+
+
+setenv GOLDENGATE_LICENSE_FILE /usr/licensed/Agilent/agilent.lic
+setenv RFDE_CDS_VERSION 6.1.4
+setenv RFDE_DBTYPE OA
+
+#setenv GOLDENGATE_LICENSE_FILE /usr/licensed/Agilent/agilent.lic
+#setenv RFDE_CDS_VERSION 6.1.4
+#setenv RFDE_DBTYPE OA
+#source $HPEESOF_DIR/bin/setCSF.csh
+#prepend-path PATH "/usr/licensed/Agilent/ADS2013_06/bin"
+
+
+
+
+# Caliber set up
+
+#setenv MGC_HOME /usr/licensed/MentorGraphics/Hercules/ixl_cal_2009.2_27.17
+#setenv MGC_HOME /usr/licensed/MentorGraphics/ixl_cal_2009.1_17.14
+#setenv MGC_HOME /usr/licensed/MentorGraphics/ixl_cal_2013.2_35.25
+#setenv MGC_HOME /usr/licensed/MentorGraphics2020/aoi_cal_2020.1_25.14
+#setenv MGC_HOME /usr/licensed/MentorGraphics2016/install/aoi_cal_2016.4_27.18/
+#setenv MGC_HOME /usr/licensed/MentorGraphics2018/aoi_cal_2018.2_33.24/
+#setenv PATH "${PATH}:$MGC_HOME/bin"
+#setenv MGLS_LICENSE_FILE "1717@raas03"
+#setenv MGLS_LICENSE_FILE /home/kaushiks/CaliberLicense.dat
+
+
+setenv MGC_HOME /usr/licensed/MentorGraphics2019/aoi_cal_2019.1_37.21
+setenv CALIBRE_HOME /usr/licensed/MentorGraphics2019/aoi_cal_2019.1_37.21
+setenv USE_CALIBRE_VCO aoi
+setenv PATH "${PATH}:$MGC_HOME/bin" 
+
+#setenv MGLS_LICENSE_FILE "1717@raas03"
+setenv MGLS_LICENSE_FILE "/usr/licensed/licenses/mentorgraphics.license.dat"
+
+
+#setenv GF_PDK_HOME /tigress/zhengl/Research/GF9HP_2021_PDK/90HPSIGE-9HP/V1.3_2.3
+#setenv TECHDIR /tigress/zhengl/Research/GF9HP_2021_PDK/90HPSIGE-9HP/V1.3_2.3/LVS/Calibre
+
+
+setenv GF_PDK_HOME /tigress/SENGUPTA/Cadence/GF9HP2021/90HPSIGE-9HP/V1.3_2.3
+setenv TECHDIR /tigress/SENGUPTA/Cadence/GF9HP2021/90HPSIGE-9HP/V1.3_2.3/LVS/Calibre

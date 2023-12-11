@@ -1,0 +1,6 @@
+16.11.2023 12:56:06 INFO starting server id=emx-test-server log=INFO notify=False single=False timeout=None
+16.11.2023 13:01:09 INFO client  connected
+16.11.2023 14:16:54 WARNING client  lost connection
+22.11.2023 11:16:40 INFO starting server id=test-serv log=INFO notify=False single=False timeout=None
+22.11.2023 11:17:19 INFO client  connected
+22.11.2023 11:24:04 WARNING client  lost connection
