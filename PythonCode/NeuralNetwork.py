@@ -268,4 +268,5 @@ class CustomCNN(nn.Module):
 custom_cnn = CustomCNN()
 
 # Print the architecture
-print(custom_cnn)
+print(dir(custom_cnn.conv_1))
+
