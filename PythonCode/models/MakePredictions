@@ -1,0 +1,5 @@
+mock_image = zeros(18, 18)
+
+for i = 1:18 
+
+Y = predict(net, 

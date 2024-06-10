@@ -5,10 +5,10 @@ import random
 # formatted (row, col) with (0, 0) at the bottom left, 
 # increasingcup and to the right 
 # Just because of how I wrote the code later
-PIN_LOCATIONS = [(8, -1),  # left
-                 (8, 16),  # right
-                 (16, 8),  # bottom
-                 (-1, 8),] # Top
+PIN_LOCATIONS = [(8, 0),  # left
+                 (8, 17),  # right
+                 (17, 8),  # bottom
+                 (0, 8),] # Top
 
 
 PIN_NAMES = ["LEFT", "RIGHT", "BOTTOM", "TOP"]
@@ -37,12 +37,16 @@ class EMXSimulator():
         self.under_rect = self.ws.db.create_rect(self.cv, [LAYER1, "drawing"], [(-100, -100), (410, 420)])
         self.pins = []
         self.em_structure = []
-        self.grid = []
+        # 18x18 grid (16x16 plus ports)
+        self.grid = [[0 for i in range(18)] for j in range(18)]
     
     # Creates a random 16x16 structure in the layout window
     def create_random_structure(self):
         # reinitialize grid of random 1's or zeros
-        self.grid = [[round(random.randint(0, 1)) for i in range(16)] for j in range(16)]
+        for i in range(1,17):
+            for j in range(1, 17):
+                self.grid[i][j] = random.randint(0, 1)
+            
         # for outer layer of pins
         # self.grid.insert(0, [0 for i in range(18)])
         # self.grid.append([0 for i in range(18)])
@@ -93,19 +97,19 @@ class EMXSimulator():
             pin2_name = "{}_m".format(loc)
             net2 = self.ws.db.make_net(self.cv, pin2_name)
             pin2 = self.ws.db.create_pin(net2, rect_m1)
-
+            print(pin1_name, pin2_name)
             self.pins.append(pin1)
             self.pins.append(pin2)
             # append rect_ld and rect_m1 too to delete them later?
             x += 2
 
-        # expand grid object to 18x18 to take pins into account
-        self.grid.insert(0, [0 for i in range(18)])
-        self.grid.append([0 for i in range(18)])
-        # add zero to start and end of each row of grid
-        for i in range(1, len(self.grid)-1):
-            self.grid[i].insert(0,0)
-            self.grid[i].append(0)
+        # # expand grid object to 18x18 to take pins into account
+        # self.grid.insert(0, [0 for i in range(18)])
+        # self.grid.append([0 for i in range(18)])
+        # # add zero to start and end of each row of grid
+        # for i in range(1, len(self.grid)-1):
+        #     self.grid[i].insert(0,0)
+        #     self.grid[i].append(0)
         self.grid[8][0] = 1   # left
         self.grid[8][17] = 1  # right
         self.grid[17][8] = 1  # bottom
@@ -119,7 +123,8 @@ class EMXSimulator():
         while len(self.em_structure) > 0:
             # print(d_object.__dir__())
             self.ws.db.delete_object(self.em_structure.pop())
-
+            # note: doesn't delete self.grid
+    
     # runs emx, provided that the EMX form is open in cadence
     def run_emx(self):
         self.ws["start_EMX"]()
